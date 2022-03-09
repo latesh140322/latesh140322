@@ -1,0 +1,156 @@
+
+/*Header css*/
+.top_logo {
+    float: left;
+    padding: 0px 10px;
+    width: 60%;}
+ .top_logo span {
+  display: inline-block;
+  vertical-align: middle;
+  color: #004666;
+  font-weight: bold; }
+.top_logo .rgt_logo {
+  width: 40px; }
+.navbar-collapse {    
+  padding-left: 1.5rem}
+div#navbarCollapse {
+      background: rgb(75,168,46)!important;
+      justify-content: end;
+  }   
+ .navbar-nav .dropdown-menu {
+      position: relative!important;
+      margin-top: -44px;
+      width: 84%;     
+      top: 64px;}
+.top_nav .navbar-right {
+      width: 30%;
+      display: block;
+      float: right;
+      margin: 0;
+  }
+
+.navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+    padding: 3px;
+    margin-top: -5px}
+.top_nav .dropdown-menu {
+      left: -5px !important;
+      top: 45px !important;
+      min-width: 220px;
+  }    
+.top_nav .navbar-right li {
+      display: inline-block;     
+    
+  }
+.top_nav .dropdown-menu {
+      min-width: 220px;
+  }
+.dropdown-toggle::after{display: none;}
+  #notificationDropdown {
+      position: relative;
+      padding: 0px;
+      font-weight: 500;
+      margin-left: 0 !important;
+      line-height: 32px;
+  }     
+.username {
+      display: initial;
+      max-width: 100px;
+      margin-right: 10px;
+      vertical-align: middle;
+      line-height: normal; 
+            font-size: 1.2rem;}
+.navbar-nav {
+    display: flex;
+    flex-direction: row;}
+    
+  .mx-widd{margin-left: 10px;
+    padding-right: -15px;
+    box-sizing: border-box;
+    width: 98%}  
+/*Header css*/
+
+/*Left sidebar*/ 
+body.nav-sm .container.body .left_col {
+    width: 70px;
+    padding: 0;
+    position: fixed;
+    height: 45%;
+    z-index: 8;
+}      
+#sidebar-menu span.fa {
+    float: right;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 10px !important;
+    min-width: inherit;
+    color: #C4CFDA; }
+    #sidebar-menu span.fa {
+        float: right;
+        text-align: center;
+        margin-top: 5px;
+        font-size: 10px !important;
+        min-width: inherit;
+        color: #C4CFDA; }
+/*End of sidebar css*/
+/*updates section of above grid css*/
+.news_slide {
+    max-width: 100%;
+    border: 1px solid #bdbdbd;
+    width: 100%;
+    border-radius: 0px;
+}   
+div.input-block input {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #495055;
+    width: 165px;
+    padding: 15px 15px;
+    border-bottom-left-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border: 1px solid #D9D9D9;
+    outline: none;
+}
+/*Updates input css Ends*/ 
+/*badges*/
+.blue-font{color:#043b64;}
+/*Searchbox css begins*/ 
+.inpSearch {
+    background: #FFFFFF;
+    border: 1px solid #BFBFBF;
+    box-sizing: border-box;
+    border-radius: 5px !important;
+    height: 44px;
+    padding-left: 38px;
+    flex: auto;
+}
+.searchButton {
+    background: #4ba82e;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 5x;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #4ba82e;
+    font-size: 1rem;
+    line-height: 173.7%;
+    padding: 0 1rem;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+body.nav-sm span.fa, body.nav-sm .menu_section h3 {
+    display: block !important;
+}
+/*Search box css Ends*/ 
+.container.body .left_col {
+    width: 70px;
+    padding: 0;
+    position: fixed;
+    height: 100%;
+    z-index: 200;
+}
+

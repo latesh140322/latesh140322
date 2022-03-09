@@ -1,0 +1,349 @@
+<div class="clearfix"></div>
+<div class="container"> 
+<div class="right_col"> 
+<div class="row mb-2">  
+    <div class="col-md-2 col-sm-12 col-lg-2 offset-1">
+        <b class="blue-font"> Pending</b> <span class="badge rounded-pill bg-light-gren text-light">1020</span>
+    </div> 
+    <div class="col-md-2 offset-1 col-sm-12 col-lg-2">           
+        <b class="blue-font">Review</b> <span class="badge rounded-pill bg-light-gren text-light">1020</span> 
+   </div>  
+   <div class="col-md-4 offset-1 col-sm-12 col-lg-3">          
+  <b class="blue-font">Rejected</b> <span class="badge rounded-pill bg-light-gren text-light">1020</span>
+   </div>  
+ 
+</div>                     
+
+<!-- NEW DASHBOARD STRUCTURE START -->
+<div class="bg-transparent">
+<form action="" method="post" id="DNForm">
+<div class="container">             
+<div class="row">          
+<div class="col-md-9 col-12">
+<div class="input-group inputSelect mb-3">
+ <select class="form-select custom-select" id="inputGroupSelect02"> 
+  <option value="1" style="display: none;"></option> 
+     <option value="1">Income</option>
+     <option value="2">Expense</option>
+     <option value="3">Reimbursement-Income</option>
+     <option value="3">Reimbursement-Expense</option>                   
+ </select>
+ <span class="placeholder">
+    Select DLV Type
+ </span>
+</div>
+</div>
+<div class="col-sm-3 col-md-3 col-12">
+<button type="button" class="input-group-text w-100 searchAdvButton" id="searchBtn"> Create DLV</button>
+</div>
+</div>
+
+<!--Tabs for Table begins-->
+<section id="tabs">
+<div class="container">
+<div class="row">
+ <div class="col-xs-12 col-12">
+<nav class="mt-4">
+<div class="nav nav-tabs nav-fill position-relative" id="nav-tab" role="tablist">
+<a class="nav-item nav-link forCurveActive navTabsInactiveFirst" id="nav-mytask-tab" data-toggle="tab" href="#nav-mytask" role="tab" aria-controls="nav-home" aria-selected="true">
+  <i class="fa fa-tasks"></i> Pending DLVs<div id="loaderMytsk" class="spinner-border spinner-border-sm d-none" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
+</a>
+
+<a class="nav-item nav-link forCurve noMarginLeft navTabsInactiveLast mr40" id="nav-reports-tab" data-toggle="tab" href="/Dashboard/GetMyReport?status=Report" role="tab" aria-controls="nav-contact" aria-selected="false">
+  <i class="fa fa-signal"></i>  All DLVs </a>
+</div>
+</nav>
+
+<div class="tab-content py-1 px-1 px-sm-0" id="nav-tabContent">
+<div class="tab-pane fade show active" id="nav-mytask" role="tabpanel" aria-labelledby="nav-home-tab">
+<div id="taskTable_wrapper" class="dataTables_wrapper no-footer"><table class="table table-reponsive dataTable no-footer" id="taskTable" role="grid">
+<thead>
+ <tr class="my_task_table" role="row">
+     <th class="sortingFormId sorting" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-label="Form id: activate to sort column ascending" style="width: 135.875px;">DLV ID</th>
+     <th class="sortingFormName sorting" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-label="form name: activate to sort column ascending" style="width: 207.828px;">Creator</th>
+     <th class="sortingRequestForm sorting" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-label="Request From: activate to sort column ascending" style="width: 176.656px;">Description</th>
+     <th class="sortingBusinessNeed sorting" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-label="Details / Business Needs: activate to sort column ascending">Company </th>
+     <th class="sortingStatus sorting" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 103.906px;">Valid from</th>
+     <th class="sortingRecievedDate sorting_desc" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-sort="descending" aria-label="Recieved Date: activate to sort column ascending" style="width: 124.688px;">Valid Till</th>
+     <th class="sortingRecievedDate sorting_desc" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-sort="descending" aria-label="Recieved Date: activate to sort column ascending" style="width: 124.688px;">Status</th>
+     <th class="noSorting text-center sorting" tabindex="0" aria-controls="taskTable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 62.4062px;">Action</th>
+ </tr>
+ <tr>
+     <td>
+    <div class="input-group position-relative input-block">             
+        <input type="text"  id="formid" class="inpSearch">                    
+    </div>
+    </td>
+    <td>
+         <div class="input-group position-relative input-block">             
+        <input type="text"  id="Creator" class="inpSearch">                    
+    </div>
+</td>
+    <td>
+        <div class="input-group position-relative input-block">             
+            <input type="text"  id="Description" class="inpSearch">                    
+        </div>
+    </td>
+    <td>
+        <div class="input-group position-relative input-block">             
+            <input type="text"  id="Company" class="inpSearch">                    
+        </div>
+    </td>
+    <td>
+        <div class="input-group position-relative input-block">             
+            <input type="text"  id="Validfrom" class="inpSearch">                    
+        </div>
+    </td>
+    <td>
+        <div class="input-group position-relative input-block">             
+            <input type="text"  id="Company" class="inpSearch">                    
+        </div>
+    </td>
+    <td>
+        <div class="input-group position-relative input-block">             
+            <input type="text"  id="Validtill" class="inpSearch">                    
+        </div>
+    </td>
+    <td>
+        <div class="input-group position-relative input-block">             
+                             
+        </div>
+    </td>
+ </tr>    
+</thead>
+<tbody id="myTaskView"> 
+<tr class="my_task_table odd" role="row" filter="Green" id="I2022_VG22_12">     
+<td class="rowGreen">I2022_VG22_12</td>
+<td class="rowGreen">Chandrashekhar Upasani</td>
+<td class="rowGreen">Supply of Chasis for SK252</td>     
+<td title="SkodaMB" class="rowGreen">
+<input value="SkodaMB" class="inputTooltip" maxlength="10" >
+</td>
+<td data-order="02-16-2022 04:19" class="rowGreen sorting_1">16-FEB-2022</td>
+<td data-order="02-16-2023 04:19" class="rowGreen sorting_1">16-FEB-2023</td>
+<td data-order="02-16-2023 04:19" class="rowGreen sorting_1">Approved</td>
+<td class="action-btn rowGreen">
+<div class="container col-lg-12 d-flex justify-content-sm-between" style="text-align: center;">
+<button type="button"  title="View" class="btn btn-xs btn-default photography-action-btn">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+</button>
+
+    <button type="button" class="btn btn-xs btn-default  photography-action-btn" title="Edit">
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="DLV">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Checkelist">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Cancel" onclick="GoToCancelForm(5954)">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</button>
+</div>
+</td>
+<input type="hidden" id="ApprovalType" name="ApprovalType" value="1">    
+</tr>
+<tr class="my_task_table even" role="row" filter="Green" id="E2022_GQM3_13">     
+<td class="rowGreen">E2022_GQM3_13</td>
+<td class="rowGreen">Ratandeep Mokha</td>
+<td class="rowGreen">Neque porro quisquam est qui dolorem</td>     
+<td title="SAIPL" class="rowGreen">
+<input value="SAIPL" class="inputTooltip" maxlength="10" readonly="">
+</td>
+<td data-order="02-15-2021 12:13" class="rowGreen sorting_1">15-FEB-2021</td>
+<td data-order="02-15-2024 12:13" class="rowGreen sorting_1">15-FEB-2024</td>
+<td data-order="02-16-2023 04:19" class="rowGreen sorting_1">Approved</td>
+<td class="action-btn rowGreen">
+<div class="container col-lg-12 d-flex justify-content-sm-between" style="text-align: center;">
+<button type="button"  title="View" class="btn btn-xs btn-default photography-action-btn">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+</button>
+
+    <button type="button" class="btn btn-xs btn-default  photography-action-btn" title="Edit">
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="DLV">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Checkelist">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Cancel" onclick="GoToCancelForm(5954)">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</button>
+</div>
+</td>
+<input type="hidden" id="ApprovalType" name="ApprovalType" value="1">
+</tr>
+<tr class="my_task_table odd" role="row" filter="Green" id="RI2021_P2_14">    
+<td class="rowGreen">RI2021_P2_14</td>
+<td class="rowGreen">Mukund Kuchekar</td>
+<td class="rowGreen">Lorem Ipsum adalah text contoh digunakan didalam</td>     
+<td title="VWAG" class="rowGreen">
+<input value="VWAG" class="inputTooltip" maxlength="10" readonly="">
+</td>
+
+<td data-order="02-15-2022 11:52" class="rowGreen sorting_1">15-FEB-2021</td>
+<td data-order="02-15-2022 11:52" class="rowGreen sorting_1">15-FEB-2022</td>
+<td data-order="02-16-2023 04:19" class="rowGreen sorting_1">Approved</td>
+<td class="action-btn rowGreen">
+<div class="container col-lg-12 d-flex justify-content-sm-between" style="text-align: center;">
+<button type="button"  title="View" class="btn btn-xs btn-default photography-action-btn">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+</button>
+
+    <button type="button" class="btn btn-xs btn-default  photography-action-btn" title="Edit">
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="DLV">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Checkelist">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Cancel" onclick="GoToCancelForm(5954)">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</button>
+</div>
+</td>
+<input type="hidden" id="ApprovalType" name="ApprovalType" value="1">
+</tr>
+<tr class="my_task_table odd" role="row" filter="Green" id="RE2022_BA2_15">
+<td class="rowGreen">RE2022_BA2_15</td>
+<td class="rowGreen">Anand Kadam</td>
+<td class="rowGreen">Lorem Ipsum vjen nga seksionet</td>     
+<td title="SkodaMB" class="rowGreen">
+<input value="SkodaMB" class="inputTooltip" maxlength="10" readonly="">
+</td>
+<td data-order="01-15-2022 08:14" class="rowGreen sorting_1">15-JAN-2022</td>
+<td data-order="01-15-2023 08:14" class="rowGreen sorting_1">15-JAN-2023</td>
+<td data-order="02-16-2023 04:19" class="rowGreen sorting_1">Rejected</td>
+<td class="action-btn rowGreen">
+<div class="container col-lg-12 d-flex justify-content-sm-between" style="text-align: center;">
+<button type="button"  title="View" class="btn btn-xs btn-default photography-action-btn">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+</button>
+
+    <button type="button" class="btn btn-xs btn-default  photography-action-btn" title="Edit">
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="DLV">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Checkelist">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Cancel" onclick="GoToCancelForm(5954)">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</button>
+</div>
+</td>
+<input type="hidden" id="ApprovalType" name="ApprovalType" value="1">     
+</tr><tr class="my_task_table even" role="row" filter="Green" id="Sample">
+<td class="rowGreen">Sample_ID</td>
+<td class="rowGreen">Sample Person</td>
+<td class="rowGreen">Sample Description</td>                                    
+<td title="Company" class="rowGreen">
+<input value="COMPANY" class="inputTooltip" maxlength="10" readonly="">
+</td>
+<td data-order="DD-MMM-YYYY 07:05" class="rowGreen sorting_1">DD-MMM-YYYY</td>
+<td data-order="DD-MMM-YYYY 07:05" class="rowGreen sorting_1">DD-MMM-YYYY</td>
+<td data-order="02-16-2023 04:19" class="rowGreen sorting_1">Approved</td>
+<td class="action-btn rowGreen">
+<div class="container col-lg-12 d-flex justify-content-sm-between" style="text-align: center;">
+<button type="button"  title="View" class="btn btn-xs btn-default photography-action-btn">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+</button>
+
+    <button type="button" class="btn btn-xs btn-default  photography-action-btn" title="Edit">
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="DLV">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Checkelist">
+    <a href="#" class="txt-primary download-icon">
+        <i class="fa fa-download"></i>
+    </a>
+</button>
+<button type="button" class="btn btn-xs btn-default photography-action-btn" title="Cancel" onclick="GoToCancelForm(5954)">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</button>
+</div>
+</td>
+<input type="hidden" id="ApprovalType" name="ApprovalType" value="1">     
+</tr>
+</tbody>
+</table>
+<div class="dataTables_paginate paging_simple_numbers" id="taskTable_paginate"><a class="paginate_button previous disabled" aria-controls="taskTable" data-dt-idx="0" tabindex="-1" id="taskTable_previous">≪</a><span><a class="paginate_button current" aria-controls="taskTable" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="taskTable" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="taskTable" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="taskTable" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="taskTable" data-dt-idx="5" tabindex="0">5</a><span class="ellipsis">…</span><a class="paginate_button " aria-controls="taskTable" data-dt-idx="6" tabindex="0">94</a></span><a class="paginate_button next" aria-controls="taskTable" data-dt-idx="7" tabindex="0" id="taskTable_next">≫</a></div></div>
+
+</div> 
+
+<div class="tab-pane fade" id="nav-masters" role="tabpanel" aria-labelledby="nav-about-tab">
+<div id="tblMaster_wrapper" class="dataTables_wrapper no-footer"><table id="tblMaster" class="table table-striped dataTable no-footer" role="grid">
+<thead>
+ <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1">id</th><th class="sorting_disabled" rowspan="1" colspan="1">form name</th><th class="sorting_disabled" rowspan="1" colspan="1">Request From</th><th class="sorting_disabled" rowspan="1" colspan="1">Details/Business Needs</th><th class="sorting_disabled" rowspan="1" colspan="1">Status</th><th class="sorting_disabled" rowspan="1" colspan="1">Recieved Date</th><th class="sorting_disabled" rowspan="1" colspan="1">Action</th></tr>
+</thead>
+<tbody>
+<tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">No data available in table</td>
+</tr>
+</tbody>
+</table>
+<div class="dataTables_paginate paging_simple_numbers" id="tblMaster_paginate"><a class="paginate_button previous disabled" aria-controls="tblMaster" data-dt-idx="0" tabindex="-1" id="tblMaster_previous">≪</a><span></span><a class="paginate_button next disabled" aria-controls="tblMaster" data-dt-idx="1" tabindex="-1" id="tblMaster_next">≫</a></div></div>
+</div>
+<div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-about-tab">
+<div id="tblAdmin_wrapper" class="dataTables_wrapper no-footer">
+<table id="tblAdmin" class="table table-striped dataTable no-footer" role="grid">
+<thead>
+ <tr role="row">
+     <th class="sorting_disabled" rowspan="1" colspan="1">id</th>
+     <th class="sorting_disabled" rowspan="1" colspan="1">form name</th>
+     <th class="sorting_disabled" rowspan="1" colspan="1">Request From</th>
+     <th class="sorting_disabled" rowspan="1" colspan="1">Details/Business Needs</th>
+     <th class="sorting_disabled" rowspan="1" colspan="1">Status</th>
+     <th class="sorting_disabled" rowspan="1" colspan="1">Recieved Date</th>
+     <th class="sorting_disabled" rowspan="1" colspan="1">Action</th></tr>
+</thead>
+<tbody><tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">No data available in table</td>
+</tr>
+</tbody>
+</table>
+<div class="dataTables_paginate paging_simple_numbers" id="tblAdmin_paginate">
+<a class="paginate_button previous disabled" aria-controls="tblAdmin" data-dt-idx="0" tabindex="-1" id="tblAdmin_previous">≪</a>
+<span></span>
+<a class="paginate_button next disabled" aria-controls="tblAdmin" data-dt-idx="1" tabindex="-1" id="tblAdmin_next">≫</a>
+</div>
+</div>     
+</div>
+</div>
+</div>
+</div>
+</div>
+</section> 
+</div>
+</form> 
+</div>   
+</div>       
+</div>
+
