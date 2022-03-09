@@ -1,0 +1,95 @@
+<div class="clearfix"></div>
+
+<!--Container begins--> 
+
+    <div class="right_col"> 
+      <div class="container">            
+        <div class="row">
+         <div class="col-md-12 col-12"> 
+       
+            <div class="breadcrumb-container">
+                <div>
+                    <ol class="breadcrumb pl-0">
+                        <li>
+                            <a href="#">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                DLV
+                            </a>
+                        </li>
+                        <li class="active">DLV Income form</li>
+                    </ol>
+                </div>
+            </div>
+          </div>
+        </div><!--End of row-->    
+       
+    <div class="container form-container">
+     
+      <div class="row mt-2">    
+        <div class="table-bordered mx-widd">        
+        <div class="col-md-2 col-md-2">         
+            <span class="placeholder bg-transparent mt-3 mx-2">Date : 21-02-2022</span>
+        </div>
+        <div class="col-md-8  mt-2 mb-1 form-heading" style="text-align:center; margin-top:5px">
+            <span>DLV Form</span>
+        </div>
+        <div class="col-md-2 col-12">
+        </div>
+      </div>
+    </div>
+        <div class="pb-4 pt-4">
+          <form action="" id="" method="post">
+            <div class="heading d-none" id="headingErr">
+                <h1 id="" class="info-header">Following fields are mandatory. Please fill in information for</h1>
+                <div id="add_to_me" class="header-list" style="color:red;"></div>
+            </div>
+
+   <div class="w-100 m-auto">     
+<div class="accordion" id="accordionExample">    
+               
+  <app-incomeheader></app-incomeheader>     
+  <app-income></app-income>       
+ <app-incomechecklist></app-incomechecklist>
+ <app-incomehistory></app-incomehistory>
+
+ <div class="row mt-2">
+ <div class="col-md-12">
+ <label class="f-600">  (Prefilled 9% CGST & 9% SGST) in INR will be applicable on above amounts every year. Tax rates are subject to change and may vary at the time of actual provision of services. Applicable taxes and levies shall be charged as per prevailing rates
+   </label>
+ </div>
+ </div>
+ <!--footer begins-->
+     <div class="card-footer align-content-center">
+       <button type="button" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
+         Generate DLV
+     </button>
+     <button type="submit" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
+         Save as Draft
+     </button>
+         <button type="submit" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
+             Submit for Review
+         </button>
+         <button type="reset" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
+             Cancel
+         </button>
+     </div><!--End of Buttons div-->
+    </div>               
+     <!--End of Accordion-->
+        </div><!--End of Accordion container-->
+      </form>
+    </div><!--End of form head container-->
+ 
+  </div>   
+  <!--End of form container-->        
+</div><!--end if right-col container-->
+</div>
+
+ 
+
+ 
+
+
