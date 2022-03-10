@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { SharedService } from './Services/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
  
+  constructor(public sharedService: SharedService){}
+  ngOnInit(): void {
+    this.sharedService.getSiteContent();
+  }
 }
