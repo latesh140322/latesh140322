@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { IncomeComponent } from './income/income.component';
 import { IncomechecklistComponent } from './incomechecklist/incomechecklist.component';
 import { IncomehistoryComponent } from './incomehistory/incomehistory.component';
 import { LeftsidemenuComponent } from './leftsidemenu/leftsidemenu.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LeftsidemenuComponent } from './leftsidemenu/leftsidemenu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
