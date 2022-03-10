@@ -1,4 +1,4 @@
-<div class="clearfix"></div>
+<div class="clearfix">
 <div class="container"> 
 <div class="right_col"> 
 <div class="row mb-2">  
@@ -16,28 +16,34 @@
 
 <!-- NEW DASHBOARD STRUCTURE START -->
 <div class="bg-transparent">
-<form action="" method="post" id="DNForm">
-<div class="container">             
+
+<div class="container">   
+<form #DLV_Form = "ngForm" (ngSubmit)="onRoute(DLV_Form)">           
 <div class="row">          
 <div class="col-md-9 col-12">
 <div class="input-group inputSelect mb-3">
- <select class="form-select custom-select" id="inputGroupSelect02"> 
-  <option value="1" style="display: none;"></option> 
-     <option value="1">Income</option>
-     <option value="2">Expense</option>
-     <option value="3">Reimbursement-Income</option>
-     <option value="3">Reimbursement-Expense</option>                   
+ <select class="form-select custom-select" 
+         id="type_DLV"
+         name="type_DLV"
+         #type_DLV="ngModel"
+         ngModel
+         [(ngModel)]="default_Type"
+         > 
+     <option [ngValue]="null" style="display: none;">Select DLV Type</option> 
+     <option value="income/create">Income</option>
+     <option [ngValue]="null">Expense</option>
+     <option [ngValue]="null">Reimbursement-Income</option>
+     <option [ngValue]="null">Reimbursement-Expense</option>                   
  </select>
- <span class="placeholder">
-    Select DLV Type
- </span>
 </div>
 </div>
 <div class="col-sm-3 col-md-3 col-12">
-<button type="button" class="input-group-text w-100 searchAdvButton" id="searchBtn"> Create DLV</button>
+<button type="submit" class="input-group-text w-100 searchAdvButton" id="searchBtn"> Create DLV</button>
 </div>
 </div>
+</form>
 
+<form action="" method="post" id="DNForm">
 <!--Tabs for Table begins-->
 <section id="tabs">
 <div class="container">
@@ -341,9 +347,10 @@
 </div>
 </div>
 </section> 
-</div>
 </form> 
-</div>   
-</div>       
-</div>
 
+</div>
+</div>
+</div>
+</div>
+</div>
