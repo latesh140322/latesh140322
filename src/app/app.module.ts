@@ -15,6 +15,9 @@ import { IncomehistoryComponent } from './incomehistory/incomehistory.component'
 import { LeftsidemenuComponent } from './leftsidemenu/leftsidemenu.component';
 import { BrowserModule } from '@angular/platform-browser';
 
+import{HttpClientModule} from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +33,8 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
