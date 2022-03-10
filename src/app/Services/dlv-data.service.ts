@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Web } from 'sp-pnp-js';
 import {SharedService} from './shared.service';
+import{HttpClient} from '@angular/common/http'
+
+
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class DLVDataService {
 
   constructor(private sharedService: SharedService) { }
   web:any;
@@ -21,5 +25,4 @@ export class UserService {
       }).catch;
     }));
   }
-
 }

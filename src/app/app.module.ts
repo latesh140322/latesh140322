@@ -13,6 +13,9 @@ import { IncomechecklistComponent } from './incomechecklist/incomechecklist.comp
 import { IncomehistoryComponent } from './incomehistory/incomehistory.component';
 import { LeftsidemenuComponent } from './leftsidemenu/leftsidemenu.component';
 
+import{HttpClientModule} from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,8 @@ import { LeftsidemenuComponent } from './leftsidemenu/leftsidemenu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
