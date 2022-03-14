@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-incomeform',
@@ -16,7 +17,8 @@ export class IncomeformComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onGenerateDLV(){
-
+  onGenerateDLV(form : NgForm){
+    console.log(form);
+    
   }
 }

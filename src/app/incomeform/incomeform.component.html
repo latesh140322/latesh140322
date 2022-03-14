@@ -50,10 +50,9 @@
 
    <div class="w-100 m-auto">     
 <div class="accordion" id="accordionExample">    
-    <form (ngSubmit)="onSuonGenerateDLVbmit(formValue)" #formValue=ngForm >  
-
-
-
+    <form  #formValue = "ngForm"  (ngSubmit)="onGenerateDLV(formValue)">
+      
+      
       <!-- Header Details input field -->
       <div class="accordion-item">   
         <h5 class="accordion-header" id="headingOne">
@@ -113,7 +112,7 @@
                         [(ngModel)]="default_Rec"
                         required
                         >
-                  <option [ngValue]="null" style="display : none;">Select Services</option>
+                  <option [ngValue] = "null" style="display : none;">Select Services</option>
                   <option value="SAIPL">SAIPL</option>
                   <option value="SkodaMB">SkodaMB</option>
                   <option value="VWAG">VWAG</option>
@@ -122,7 +121,7 @@
 
                <!-- <small class="text-danger" *ngIf="type_Receiver.touched && !default_Type" >*reuqried field</small> -->
                    <span class="text-danger"
-                       *ngIf="(type_Receiver.touched || formValue.submitted) && type_Receiver.errors?.required && !default_Type">
+                       *ngIf=" (type_Receiver.touched ||formValue.submitted) && type_Receiver.errors?.required">
                        *reuqried field
                    </span>
              </div> 
@@ -144,8 +143,7 @@
                         >
                        </div>
 
-                       <span class="text-danger"
-                       *ngIf="(type_Dept.touched || formValue.submitted) && type_Dept.errors?.required">
+                       <span class="text-danger" *ngIf="(type_Dept.touched ||formValue.submitted) && type_Dept.errors?.required">
                        *reuqried field
                        </span>
 
@@ -882,8 +880,22 @@
                       </div>
                       <div class="col-md-4 col-12">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Event Organiser">
+                          <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Event Organiser"
+                                id="type_event"
+                                name="type_event"
+                                #type_event="ngModel"
+                                ngModel
+                                required
+                                >
                         </div>
+                        <span class="text-danger"
+                              *ngIf="(type_Event.touched || formValue.submitted) && type_Event.errors?.required ">
+                           *requried field
+                       </span>
+
                          </div>                                
                       </div><!--end of row-->
                       <div class="row mt-2">        
@@ -923,6 +935,23 @@
         </div>   
        <!--End of Checklist Details input field -->
  <app-incomehistory></app-incomehistory>
+ <!--footer begins-->
+ <div class="card-footer align-content-center">
+  <button type="submit" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
+    Generate DLV
+</button>
+<button type="submit" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
+    Save as Draft
+</button>
+    <button type="submit" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
+        Submit for Review
+    </button>
+    <button type="reset" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
+        Cancel
+    </button>
+</div>
+<!--End of Buttons div-->
+ 
 </form> 
 
 
@@ -933,21 +962,7 @@
  </div>
  </div>
  
-    <!--footer begins-->
-     <div class="card-footer align-content-center">
-       <button type="button" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
-         Generate DLV
-     </button>
-     <button type="submit" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
-         Save as Draft
-     </button>
-         <button type="submit" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
-             Submit for Review
-         </button>
-         <button type="reset" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
-             Cancel
-         </button>
-     </div><!--End of Buttons div-->
+   
     </div>               
      <!--End of Accordion-->
         </div><!--End of Accordion container-->
