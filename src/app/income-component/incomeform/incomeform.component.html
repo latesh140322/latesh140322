@@ -1,0 +1,981 @@
+<div class="clearfix"></div>
+
+<!--Container begins--> 
+
+    <div class="right_col"> 
+      <div class="container">            
+        <div class="row">
+         <div class="col-md-12 col-12"> 
+       
+            <div class="breadcrumb-container">
+                <div>
+                    <ol class="breadcrumb pl-0">
+                        <li>
+                            <a href="#">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                DLV
+                            </a>
+                        </li>
+                        <li class="active">DLV Income form</li>
+                    </ol>
+                </div>
+            </div>
+          </div>
+        </div><!--End of row-->    
+       
+    <div class="container form-container">
+     
+      <div class="row mt-2">    
+        <div class="table-bordered mx-widd">        
+        <div class="col-md-2 col-md-2">         
+            <span class="placeholder bg-transparent mt-3 mx-2">Date : 21-02-2022</span>
+        </div>
+        <div class="col-md-8  mt-2 mb-1 form-heading" style="text-align:center; margin-top:5px">
+            <span>DLV Form</span>
+        </div>
+        <div class="col-md-2 col-12">
+        </div>
+      </div>
+    </div>
+        <div class="pb-4 pt-4">
+          <form action="" id="" method="post">
+            <div class="heading d-none" id="headingErr">
+                <h1 id="" class="info-header">Following fields are mandatory. Please fill in information for</h1>
+                <div id="add_to_me" class="header-list" style="color:red;"></div>
+            </div>
+
+   <div class="w-100 m-auto">     
+<div class="accordion" id="accordionExample">    
+    <form  #formValue = "ngForm"  (ngSubmit)="onGenerateDLV(formValue)">
+      
+      
+      <!-- Header Details input field -->
+      <div class="accordion-item">   
+        <h5 class="accordion-header" id="headingOne">
+             <button class="accordion-button collapsed" 
+                     type="button" 
+                     data-bs-toggle="collapse" 
+                     data-bs-target="#collapseOne" 
+                     aria-expanded="false" 
+                     aria-controls="collapseOne">
+               <img src="assets/images/empIcon.svg" width="24" height="24" class="mx-2">
+               Header
+             </button>
+        </h5>                                   
+
+<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+  <div class="accordion-body">
+      <div class="row">
+          <div class="col-md-12 col-lg-12 col-12">
+              <div class="empDetailsFields text-left">
+             <div class="row">
+                 <div class="form-group col-md-2 col-lg-2 col-12">
+                     <label class="f-600">DLV type</label>
+                  </div>  
+                 <div class="col-md-2 col-12">
+                  <label class="f-300">Income</label>                                                                                 
+                </div>
+                 <div class="col-md-2">
+                     <label class="f-600">Service Provider</label>
+                    </div>  
+                 <div class="col-md-2">SAVWIPL</div> 
+                 <div class="col-md-2 col-lg-2 col-12">
+                  <label class="f-600">Contract No</label>                 
+                 </div>    
+                 <div class="col-md-2 col-lg-2 col-12">
+                  <div class="input-group">
+                    <input type="text" class="form-control" aria-label="Text input " placeholder="IYYYY_DEPT_ID" hidden>
+                    <label class="f-300">IYYYY_DEPT_ID </label>
+                    </div>
+                 </div>                                                                                                                                
+             </div> 
+             <!--End of row-->
+             <!--begning of row2-->
+             <div class="row mt-3">
+               <div class="col-md-2">
+                <label class="f-600"> Service Receiver 
+                  <span class="astColor">*</span>
+                 </label>
+                </div>  
+               <div class="col-md-4">
+                <select 
+                        class="form-select form-select-sm custom-select" 
+                        aria-label=".form-select-sm example"
+                        id="type_Receiver"
+                        name="type_Receiver"
+                        #type_Receiver="ngModel"
+                        ngModel
+                        [(ngModel)]="default_Rec"
+                        required
+                        >
+                  <option [ngValue] = "null" style="display : none;">Select Services</option>
+                  <option value="SAIPL">SAIPL</option>
+                  <option value="SkodaMB">SkodaMB</option>
+                  <option value="VWAG">VWAG</option>
+                  <option value="Sample">Sample</option>
+               </select> 
+
+               <!-- <small class="text-danger" *ngIf="type_Receiver.touched && !default_Type" >*reuqried field</small> -->
+                   <span class="text-danger"
+                       *ngIf=" (type_Receiver.touched ||formValue.submitted) && type_Receiver.errors?.required">
+                       *reuqried field
+                   </span>
+             </div> 
+               <div class="col-md-2"> 
+                <label class="f-600">Department<span class="astColor">*</span></label>             
+                </div>
+                
+               <div class="col-md-4"> 
+                  
+                <div class="input-group">
+                  <input 
+                        type="text" class="form-control" 
+                        placeholder="Deparment e.g. VG22"
+                        id="type_Dept"
+                        name="type_Dept"
+                        #type_Dept="ngModel"
+                        ngModel
+                        required
+                        >
+                       </div>
+
+                       <span class="text-danger" *ngIf="(type_Dept.touched ||formValue.submitted) && type_Dept.errors?.required">
+                       *reuqried field
+                       </span>
+
+             </div>                                                                 
+             </div>
+             <!--End of row2-->
+             <!--begning of row 3-->
+             <div class="row mt-2">
+                 <div class="col-md-2 col-12">
+                  <label class="f-600">
+                      Validity From <span class="astColor">*</span>
+                </label>
+                    </div>                                   
+                  <div class="col-md-4 col-12">                        
+                    <div class="input-group date" id="datepicker">
+                        <input 
+                              type="date" 
+                              class="form-control" 
+                              placeholder="DD-MMM-YYYY"
+                              id="type_Valid"
+                              name="type_Valid"
+                              #type_Valid="ngModel"
+                              ngModel
+                              required
+                              />
+                        
+                      </div>
+                      <span class="text-danger"
+                           *ngIf="(type_Valid.touched || formValue.submitted) && type_Valid.errors?.required">
+                           *reuqried field
+                      </span>
+
+                      
+                     </div>
+                     <div class="col-md-2 col-12">
+                      <label class="f-600"> Till</label>
+                     </div>
+                <div class="col-md-4 col-12">                        
+                 <div class="input-group date" id="datepicker1">
+                   <input type="date" class="form-control" placeholder="DD-MMM-YYYY" id="validfrom"/>
+                   
+                 </div>
+               </div>                                                                 
+               </div>
+             <!--End of row3-->
+        <!--begning of row 4-->
+        <div class="row mt-2">
+            <div class="col-md-2">
+                <label class="f-600">Cost center<span class="astColor">*</span></label></div>  
+            <div class="col-md-4">
+              <div class="input-group">
+                <input
+                       type="text"
+                       class="form-control"
+                       placeholder="Cost Center e.g. 12131"
+                       id="type_Cost"
+                       name="type_Cost"
+                       #type_Cost="ngModel"
+                       ngModel
+                       required
+                       >
+              </div>
+              <span class="text-danger"
+                  *ngIf="(type_Cost.touched || formValue.submitted) && type_Cost.errors?.required"
+              >
+                *required field
+              </span>
+            </div> 
+                        
+             <div class="col-md-2">                  
+                   <label class="f-600">Prepared by
+                       <span class="astColor">*</span>
+                   </label>
+                </div>
+           <div class="col-md-4"> 
+            <div class="input-group">
+                <input 
+                      type="text" 
+                      class="form-control" 
+                      placeholder="Name of DLV Creator"
+                      aria-label="Text input with radio button"
+                      id="type_Prep"
+                      name="type_Prep"
+                      #type_Prep="ngModel"
+                      ngModel
+                      required
+                      >
+                </div>
+
+                <span class="text-danger"
+                      *ngIf="(type_Prep.touched || formValue.submitted) && type_Prep.errors?.required ">
+                
+                  *requried field
+                </span>
+          </div> 
+        </div>                                                                 
+          </div>
+        <!--End of row4-->
+  <!--begning of row 5-->
+        <div class="row mt-2">
+            <div class="col-md-2 col-12">
+                <label class="f-600">Service Receiver Details<span class="astColor">*</span></label></div>  
+            <div class="col-md-10 col-12">
+              <label class="f-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Populated Based on Service Provider Selection" hidden>
+                </div>
+          </div>                                                                               
+          </div>
+        <!--End of row5-->                 
+          </div>
+       </div>
+             </div>
+         </div>
+      </div>    
+      <!--End of Header Details input field --> 
+
+
+
+       <!-- Income Details input field -->
+       
+       <div class="accordion-item">
+        <h5 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="fa fa-money mx-2"></i>Income 
+          </button>
+        </h5>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <!--begning of row 6-->
+              <div class="row mt-2">
+               <div class="col-md-2 col-12">
+                   <label class="f-600">Incorporated</label>
+               </div>  
+               <div class="col-md-4 col-12">
+                   <div class="input-group">
+                     <label class="f-300">India</label>
+                       <input type="text" class="form-control"value="Based on Company" hidden>
+                     </div>
+                   </div>  
+                     <div class="col-md-2 col-12">
+                       <label class="f-600">Place of Business</label>
+                   </div>  
+                   <div class="col-md-4 col-12">
+                       <div class="input-group">
+                         <label class="f-300">A-1/1, MIDC, Shendra Kamangar, Maharashtra 431007, Aurangabad, Maharashtra</label>
+                         <input type="text" class="form-control"placeholder="Based on Company" hidden>
+                   </div>     
+                    </div>                                                                               
+             </div>
+           <!--End of row6-->
+             <!--begning of row7-->
+             <div class="row mt-2">
+               <div class="col-md-2 col-12">
+                   <label class="f-600">Receiver Name<span class="astColor">*</span></label>
+               </div>  
+               <div class="col-md-4 col-12">
+                   <div class="input-group">
+                     <label class="f-300">Skoda Auto India Private Limited</label>
+                       <input type="text" class="form-control"placeholder="Full name of the company based on company" hidden>
+                     </div>
+                   </div>  
+                     <div class="col-md-6 col-12">
+                       
+                   </div>  
+                   <div class="col-md-4 col-12">
+                  
+                    </div>
+                                                                                              
+             </div>
+           <!--End of row7-->
+           <div class="row mt-2">
+             <div class="col-md-12 col-12">
+           <label class="f-600">Description of Business</label>
+           </div>
+           <div class="col-md-12 col-12">       
+               <div class="form-floating">
+                 <textarea class="form-control" placeholder="Activities Based on Company" id="descriptionofbusiness">Manufacture, Sales and Aftersales business of Volkswagen Group Cars in India</textarea>
+                 <label for="descriptionofbusiness">Activities Based on Company</label>
+                 </div>
+             </div>         
+               </div><!--End of row-->
+                 <div class="row mt-2">
+                   <div class="col-md-12 col-12">
+                     <label class="f-600">Description of Services</label>
+                     </div>
+                   <div class="col-md-12 col-12">
+                 <div class="form-floating">
+                   <textarea class="form-control" placeholder="Description of Services" id="descriptionofservices"></textarea>
+                   <label for="descriptionofservices">Description of Services</label>
+                 </div>
+                 </div>
+                 </div>
+              <!--begning of row8-->
+              <div class="row mt-2">
+               <div class="col-md-2 col-12">
+                   <label class="f-600">Approached By</label>
+               </div>  
+               <div class="col-md-4 col-12">
+                   <div class="input-group">
+                     <label class="f-300">SAIPL</label>
+                       <input type="text" class="form-control" placeholder="Populated based on Company" hidden>
+                     </div>
+                   </div>  
+                     <div class="col-md-6 col-12">                          
+                   </div>                                                                                             
+             </div>
+           <!--End of row8-->
+               <!--begning of row9-->
+               <div class="row mt-2">
+                   <div class="col-md-12 col-12">
+                       <label class="f-600">Scope of Services <span class="astColor">*</span></label>
+                   </div>  
+                   <div class="col-md-12 col-12">
+                       <div class="form-floating">
+                         <textarea 
+                                  class="form-control" 
+                                  placeholder="Scope of Services" 
+                                  id="type_Scope"
+                                  name="type_Scope"
+                                  #type_Scope ="ngModel"
+                                  ngModel
+                                  required
+                                  >
+                                
+                                </textarea>
+                         <label for="scopeofservices">Scope of Services</label>
+                         </div>
+
+                         <span class="text-danger"
+                                *ngIf="(type_Scope.touched || formValue.submitted) && type_Scope.errors?.required ">
+                           *requried field
+                         </span>
+                   </div>
+                   </div>
+                   <div class="row mt-2">                      
+                         <div class="col-md-12 col-12">
+                           <label class="form-label f-600" for="customFile">Upload Scope <span class="astColor">*</span></label>                               
+                         </div>   
+                       <div class="col-md-3 col-12">
+                           <input 
+                                  type="file" 
+                                  class="form-control" 
+                                  id="type_Upload" 
+                                  name="type_Upload"
+                                  #type_Upload="ngModel"
+                                  ngModel
+                                  required
+                                  />
+                        </div>           
+                            <span class="text-danger"
+                                  *ngIf="(formValue.submitted) && type_Upload.errors?.required ">
+                                  *requried field
+                            </span>                                                                                 
+                 </div>
+               <!--End of row9-->
+               <!--begning of row10-->
+               <div class="row mt-2">
+                 <div class="col-md-2 col-12">
+                     <label class="f-600">Consideration <span class="astColor">*</span></label>
+                 </div>  
+                 <div class="col-md-12 col-12">
+                     <div class="form-floating">
+                       <textarea 
+                                class="form-control" 
+                                placeholder="Consideration Text" 
+                                id="type_Cond"
+                                name="type_Cond"
+                                #type_Cond ="ngModel"
+                                ngModel
+                                required
+                                >
+                              </textarea>
+                       <label for="considerationtext">Scope of Services</label>
+                     </div>
+                     <span class="text-danger"
+                                *ngIf="(type_Cond.touched || formValue.submitted) && type_Cond.errors?.required ">
+                           *requried field
+                         </span>
+                 </div>                      
+               </div>
+               <div class="row mt-2">
+                 <div class="col-md-12 col-12">
+                     <label class="form-label f-600" for="customFile">Upload Consideration <span class="astColor">*</span></label>                               
+                   </div>  
+                   <div class="col-md-3 col-12">
+                     <input 
+                            type="file" 
+                            class="form-control" 
+                            id="type_upCond" 
+                            name="type_upCond"
+                            #type_upCond ="ngModel"
+                            ngModel
+                            required
+                            />
+                     </div>
+                     <span class="text-danger"
+                            *ngIf="formValue.submitted && type_upCond.errors?.required">
+                          *requried field
+                          </span>
+                     <div class="col-md-6 col-12">                        
+                     </div>                
+               </div>
+               <!--End of row10-->
+       
+               <!--begning of row11-->
+               <div class="row mt-2">
+                   <div class="col-md-2 col-12">
+                       <label class="f-600">GST% <span class="astColor">*</span></label>
+                   </div>  
+                   <div class="col-md-4 col-12">
+                       <div class="input-group">
+                           <input 
+                                  type="number" 
+                                  class="form-control"  
+                                  pattern="[0-9]+(\.[0-9]{1,2})?%?" 
+                                  placeholder="0.00%"
+                                  id="type_GST"
+                                  name="type_GST"
+                                  #type_GST="ngModel"
+                                  ngModel
+                                  required
+                                  >
+                         </div> 
+                         <span class="text-danger"
+                                *ngIf="(type_GST.touched || formValue.submitted) && type_GST.errors?.required">
+                                *required field
+                         </span>                           
+                       </div>  
+                       <div class="col-md-2 col-12">
+                           <label class="f-600">GST Amount <span class="astColor">*</span></label>
+                       </div>  
+                       <div class="col-md-2 col-12">
+                         <input 
+                                type="number" 
+                                class="form-control"  
+                                pattern="[0-9]+(\.[0-9]{1,2})" 
+                                placeholder="GST Amount e.g. 121.12"
+                                id="type_GSTAmt"
+                                name="type_GSTAmt"
+                                #type_GSTAmt="ngModel"
+                                ngModel
+                                required
+                                >       
+                                <span class="text-danger"
+                                      *ngIf="(type_GSTAmt.touched || formValue.submitted) && type_GSTAmt.errors?.required">
+                                      *required field
+                                </span>              
+                      </div>  
+                    
+
+                     <div class="col-md-2 col-12">
+                       <select class="form-select form-select-sm custom-select" aria-label=".form-select-sm example">
+                         <option value="">Select Currency</option>
+                         <option value="Monthly">INR</option>
+                         <option value="Quaterly">EURO</option>
+                         <option value="Semiannually">USD</option>                       
+                       </select> 
+                       
+                     </div>    
+                                  
+                 </div>
+               <!--End of row11-->
+               
+               
+               <!--begning of row12-->
+                 <div class="row mt-2">
+                   <div class="col-md-2 col-12">
+                       <label class="form-label f-600" for="SAVWIPL">SAVWIPL</label>   
+                       <label class="form-label f-600" for="Name">Name <span class="astColor">*</span></label>                            
+                     </div>  
+                     <div class="col-md-4 col-12">                    
+                       <div class="input-group">
+                           <input 
+                                  type="text" 
+                                  class="form-control" 
+                                  placeholder="Notice SAVWIPL Name" 
+                                  id="type_SAVWIPL"
+                                  name="type_SAVWIPL"
+                                  #type_SAVWIPL="ngModel"
+                                  ngModel
+                                  required
+                                  >
+                         </div>
+                         <span class="text-danger"
+                              *ngIf="(type_SAVWIPL.touched || formValue.submitted) && type_SAVWIPL.errors?.required">
+                              *required field
+                        </span>  
+
+                       </div>
+                       <div class="col-md-2 col-12">
+                           <label class="form-label f-600" for="Email">Email <span class="astColor">*</span></label>
+                        </div>
+                        <div class="col-md-4 col-12">
+                          <div class="input-group">
+                              <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    placeholder="Notice SAVWIPL Email ID"
+                                    id="email"
+                                    name="email"
+                                    #email="ngModel"
+                                    ngModel
+                                    required
+                                    >
+                            </div>
+                            <span class="text-danger"
+                                *ngIf="(email.touched || formValue.submitted) && email.errors?.required">
+                                *required field
+                            </span>
+                            <span class="text-danger" *ngIf=" email.valid && email.errors?.email">
+                                Enter a valid email address
+                            </span>
+
+                          </div>    
+                           
+                 </div>
+               <!--End of row12-->
+       
+               <!--begning of row13-->
+               <div class="row mt-2">
+                 <div class="col-md-2 col-12">
+                     <label class="form-label f-600" for="REceiver">Receiver Name<span class="astColor">*</span></label>                               
+                   </div>  
+                   <div class="col-md-4 col-12">                 
+                     <div class="input-group">
+                         <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Notice Receiver Name" 
+                                id="NoticeReceiverName"
+                                id="type_Receiver"
+                                name="type_Receiver"
+                                #type_Receiver="ngModel"
+                                ngModel
+                                required
+                                >
+                       </div>
+                       <span class="text-danger"
+                              *ngIf="(type_Receiver.touched || formValue.submitted) && type_Receiver.errors?.required">
+                              *required field
+                        </span> 
+                     </div>
+                     <div class="col-md-2 col-12">
+                       <label class="form-label f-600" for="Email">Receiver Email <span class="astColor">*</span></label>                               
+                     </div>  
+                     <div class="col-md-4 col-12">                     
+                         <div class="input-group">
+                             <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    placeholder="Notice Receiver Email ID"
+                                    id="type_email"
+                                    name="type_email"
+                                    #type_email="ngModel"
+                                    ngModel
+                                    required
+                                    >
+                           </div>
+                           <span class="text-danger"
+                                *ngIf="(type_email.touched || formValue.submitted) && type_email.errors?.required">
+                                *required field
+                            </span>
+                            <span class="text-danger" *ngIf=" type_email.valid && type_email.errors?.email">
+                              Enter a valid email address
+                            </span>
+                         </div>                 
+               </div>
+               <!--End of row13-->
+                      <!--begning of row14-->
+                      <div class="row mt-2">
+                       <div class="col-md-12 col-12">
+                           <div class="form-floating">
+                               <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                               <label for="floatingTextarea">Additional Miscelleneous Clauses</label>
+                             </div>                     
+                           </div>                
+                     </div>
+                   <!--End of row14-->
+          </div>
+        </div>
+       </div>
+       <!--End of Income Details input field -->     
+ 
+
+       <!-- Checklist Details input field -->
+        <div class="accordion-item">
+  <h5 class="accordion-header" id="headingthree">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsethree" aria-expanded="false" aria-controls="collapsethree">
+      <img src="assets/images/transactionIcon.svg" width="24" height="24" class="mx-2">
+      Income Checklist
+    </button>
+  </h5>
+  <div id="collapsethree" class="accordion-collapse collapse" aria-labelledby="headingthree" data-bs-parent="#accordionExample">
+    <div class="accordion-body">        
+        <div class="row mt-2">        
+         <div class="col-md-5 col-12">
+          <label class="f-600">1. Gist of the contract / Nature  of transaction
+            <span class="astColor">*</span></label>
+         </div>                 
+          <div class="col-md-7 col-12">
+            <div class="input-group">
+              <input 
+                    type="text" 
+                    class="form-control"
+                    id="type_Trac"
+                    name="type_Trac"
+                    #type_Trac ="ngModel"
+                    ngModel
+                    required
+                    >
+            </div>
+            <span class="text-danger"
+                  *ngIf="(type_Trac.touched || formValue.submitted) && type_Trac.errors?.required ">
+              *requried field
+            </span>
+          </div>
+        </div>
+        <div class="row mt-2">        
+          <div class="col-md-5 col-12">
+           <label class="f-600">2. Please mention reasons for entering into a transaction with 
+             related overseas party rather than with a third party 
+              <span class="astColor">*</span></label>
+          </div>                 
+           <div class="col-md-7 col-12">
+             <div class="input-group">
+               <input 
+                      type="text" 
+                      class="form-control"
+                      id="type_Res"
+                      name="type_Res"
+                      #type_Res="ngModel"
+                      ngModel
+                      required
+                      >
+             </div>
+             <span class="text-danger"
+                  *ngIf="(type_Res.touched || formValue.submitted) && type_Res.errors?.required ">
+              *requried field
+            </span>
+           </div>
+         </div>
+      
+         <!--End of row-->
+  
+         <div class="row mt-2">        
+         <div class="col-md-12 col-12">
+          <label class="f-800"> Cost plus workings</label>
+           </div>
+           </div>
+           <div class="row mt-2">        
+            <div class="col-md-2 col-12">
+             <label class="f-600">Basic cost </label>
+              </div>
+              <div class="col-md-2 col-12">
+                <div class="input-group">
+                  <input type="number" class="form-control" placeholder="DLV Basic Cost">
+                </div>
+                 </div>
+                 <div class="col-md-2 col-12">
+                  <label class="f-600">Margin </label>
+                   </div>
+                   <div class="col-md-2 col-12">
+                     <div class="input-group">
+                       <input type="number" class="form-control"placeholder="DLV Margin e.g. 12000">
+                     </div>
+                      </div>
+                      <div class="col-md-2 col-12">
+                        <label class="f-600">Total price agreed </label>
+                         </div>
+                         <div class="col-md-2 col-12">
+                           <div class="input-group">
+                             <input type="number" class="form-control" placeholder="DLV Value 120000">
+                           </div>
+                            </div>
+              </div><!--end of row-->
+              <!--Begning of row-->
+              <div class="row mt-2">        
+                <div class="col-md-2 col-12">
+                 <label class="f-600">Permanent Account Number[PAN]:<span class="astColor">*</span> </label>
+                  </div>
+                  <div class="col-md-4 col-12">
+                    <div class="input-group">
+                      <input 
+                            type="text" 
+                            class="form-control"
+                             placeholder="ABCDE1234F"
+                             id="type_Pan"
+                             name="type_Pan"
+                             #type_Pan="ngModel"
+                             ngModel
+                             required
+                             >
+                    </div>
+                    <span class="text-danger"
+                          *ngIf="(type_Pan.touched || formValue.submitted) && type_Pan.errors?.required ">
+                        *requried field
+                    </span>
+                    </div>                  
+                          <div class="col-md-2 col-12">
+                            <label class="f-600">Currency </label>
+                             </div>
+                            <div class="col-md-4 col-12">
+                              <select class="form-select form-select-sm custom-select" aria-label=".form-select-sm example">
+                                <option value="">Select Currency</option>
+                                <option value="Monthly">INR</option>
+                                <option value="Quaterly">Foreign</option>                                                                     
+                              </select>
+                           </div>
+                  </div><!--end of row-->
+              
+               <div class="row mt-2">        
+                  <div class="col-md-12 col-12">
+                     <label class="f-800"> Functions to be performed </label> </div>
+               </div><!--end of row-->
+              <!--Begning of row-->
+              <div class="row mt-2">        
+                <div class="col-md-2 col-12">
+                 <label class="f-600">Service <span class="astColor">*</span> </label>
+                  </div>
+                  <div class="col-md-4 col-12">
+                    <select 
+                          class="form-select form-select-sm custom-select" 
+                          aria-label=".form-select-sm example"
+                          id="type_Service"
+                          name="type_Service"
+                          #type_Service="ngModel"
+                          ngModel
+                          [(ngModel)]="default_Serv"
+                          required
+                          >
+                      <option [ngValue]="null" style="display: none;">Select Services</option>
+                      <option value="Reimbursement">Reimbursement</option>
+                      <option value="others">others</option>
+                      <option value="Notapplicable">Not applicable</option>                                                                     
+                    </select>
+                    <span class="text-danger"
+                          *ngIf="(type_Service.touched || formValue.submitted) && type_Service.errors?.required ">
+                      *requried field
+                   </span>
+
+                     </div>                                
+                  </div><!--end of row-->
+                
+                  <div class="row mt-2">        
+                    <div class="col-md-12 col-12">
+                       <label class="f-800">Whether goods involved </label> 
+                       </div>
+                 </div><!--end of row-->
+                 <!--Begning of row-->
+                <div class="row mt-2">        
+                  <div class="col-md-2 col-12">
+                   <label class="f-600">Location of goods <span class="astColor">*</span> </label>
+                    </div>
+                    <div class="col-md-4 col-12">
+                      <select 
+                              class="form-select form-select-sm custom-select" 
+                              aria-label=".form-select-sm example"
+                              id="type_Location"
+                              name="type_Location"
+                              #type_Location="ngModel"
+                              ngModel
+                              [(ngModel)]="default_loc"
+                              required
+                              >
+                        <option [ngValue]="null" style="display: none;">Select Country</option>
+                        <option value="Reimbursement">India</option>
+                        <option value="others">Outside India</option>                                                                                             
+                      </select>
+                      <span class="text-danger"
+                            *ngIf="(type_Location.touched || formValue.submitted) && type_Location.errors?.required ">
+                      *requried field
+                      </span>
+                       </div> 
+                       <div class="col-md-2 col-12">
+                         <label class="f-600">Name of supplier of Goods:</label>
+                         </div>   
+                         <div class="col-md-4 col-12">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="e.g.SkodaMB">
+                          </div>
+                           </div>                            
+                    </div><!--end of row-->
+                             <!--Begning of row-->
+                  <div class="row mt-2">        
+                    <div class="col-md-2 col-12">
+                      <label class="f-600"> Ownership of Goods</label>
+                  </div>
+                  <div class="col-md-4 col-12">
+                    <div class="input-group">
+                            <input type="text" class="form-control"placeholder="e.g.SAVWIPL">
+                          </div>
+                    </div>
+                </div><!--end of row-->
+                
+                    <div class="row mt-2">        
+                      <div class="col-md-12 col-12">
+                         <label class="f-800"> If the services relating to events such as conference, fair, exhibition or similar events</label> </div>
+                   </div><!--end of row-->
+                   <!--Begning of row-->
+                  <div class="row mt-2">        
+                    <div class="col-md-2 col-12">
+                     <label class="f-600">Place of event <span class="astColor">*</span> </label>
+                      </div>
+                      <div class="col-md-4 col-12">
+                        <select 
+                              class="form-select form-select-sm custom-select" 
+                              aria-label=".form-select-sm example"
+                              id="type_Event"
+                              name="type_Event"
+                              #type_Event="ngModel"
+                              ngModel
+                              [(ngModel)]="default_evn"
+                              required
+                              >
+                          <option [ngValue]="null" style="display: none;">Select Country</option>
+                          <option value="India">India</option>
+                          <option value="Outside">Outside</option>                                                                                                 
+                          <option value="NA">Not Applicable</option>
+                        </select>
+                        <span class="text-danger"
+                              *ngIf="(type_Event.touched || formValue.submitted) && type_Event.errors?.required ">
+                            *requried field
+                         </span>
+                         </div>                                
+                      </div><!--end of row-->
+                      <div class="row mt-2">        
+                    <div class="col-md-2 col-12">
+                     <label class="f-600">Name of event organizer<span class="astColor">*</span> </label>
+                      </div>
+                      <div class="col-md-4 col-12">
+                        <div class="input-group">
+                          <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Event Organiser"
+                                id="type_event"
+                                name="type_event"
+                                #type_event="ngModel"
+                                ngModel
+                                required
+                                >
+                        </div>
+                        <span class="text-danger"
+                              *ngIf="(type_Event.touched || formValue.submitted) && type_Event.errors?.required ">
+                           *requried field
+                       </span>
+
+                         </div>                                
+                      </div><!--end of row-->
+                      <div class="row mt-2">        
+                        <div class="col-md-12 col-12">
+                           <label class="f-600">Details of Third party</label>
+                        </div>
+                     </div><!--end of row-->
+                     <!--Begning of row-->
+                    
+                    <div class="row mt-2">        
+                      <div class="col-md-2 col-12">
+                       <label class="f-600">Third Party <span class="astColor">*</span> </label>
+                        </div>
+                        <div class="col-md-4 col-12">
+                          <select 
+                                class="form-select form-select-sm custom-select" 
+                                aria-label=".form-select-sm example"
+                                id="type_Party"
+                                name="type_Party"
+                                #type_Party="ngModel"
+                                ngModel
+                                [(ngModel)]="default_pyt"
+                                required
+                                >
+                            <option [ngValue]="null" style="display: none;">Type of Company</option>
+                            <option value="Group Company">Group Company</option>
+                            <option value="Non Group Company">Non Group Company</option>                                                                                                 
+                          </select>
+                          <span class="text-danger"
+                              *ngIf="(type_Party.touched || formValue.submitted) && type_Party.errors?.required ">
+                            *requried field
+                         </span>
+                           </div>                                
+                        </div><!--end of row-->
+            </div>
+    </div>   
+        </div>   
+       <!--End of Checklist Details input field -->
+ <app-incomehistory></app-incomehistory>
+ <!--footer begins-->
+ <div class="card-footer align-content-center">
+  <button type="submit" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
+    Generate DLV
+</button>
+<button type="submit" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
+    Save as Draft
+</button>
+    <button type="submit" class="btn btn-primary btn-sm submit-btn me-2" id="btnSubmit">
+        Submit for Review
+    </button>
+    <button type="reset" class="btn btn-danger btn-sm cancl-btn me-2" id="btnCancel">
+        Cancel
+    </button>
+</div>
+<!--End of Buttons div-->
+ 
+</form> 
+
+
+ <div class="row mt-2">
+ <div class="col-md-12">
+ <label class="f-600">  (Prefilled 9% CGST & 9% SGST) in INR will be applicable on above amounts every year. Tax rates are subject to change and may vary at the time of actual provision of services. Applicable taxes and levies shall be charged as per prevailing rates
+   </label>
+ </div>
+ </div>
+ 
+   
+    </div>               
+     <!--End of Accordion-->
+        </div><!--End of Accordion container-->
+      </form>
+    </div><!--End of form head container-->
+ 
+  </div>   
+  <!--End of form container-->        
+</div><!--end if right-col container-->
+</div>
+
+ 
+
+ 
+
+
