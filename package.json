@@ -28,6 +28,7 @@
     "custom-event-polyfill": "^1.0.7",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
+    "node-sass": "^4.14.1",
     "rxjs": "~6.6.0",
     "sp-pnp-js": "^3.0.10",
     "tslib": "^2.3.0",
