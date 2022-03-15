@@ -30,7 +30,6 @@
     "jquery": "^3.6.0",
     "rxjs": "~6.6.0",
     "sp-pnp-js": "^3.0.10",
-    "node-sass": "^7.0.1",
     "tslib": "^2.3.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "^0.11.5"
