@@ -31,7 +31,6 @@
     "node-sass": "^4.14.1",
     "rxjs": "~6.6.0",
     "sp-pnp-js": "^3.0.10",
-    "sp-rest-proxy": "^3.3.3",
     "tslib": "^2.3.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "^0.11.5"

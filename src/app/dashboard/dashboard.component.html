@@ -18,22 +18,20 @@
 <div class="bg-transparent">
 
 <div class="container">   
-<form #DLV_Form = "ngForm" (ngSubmit)="onRoute(DLV_Form)">           
+<form>           
 <div class="row">          
 <div class="col-md-9 col-12">
 <div class="input-group inputSelect mb-3">
  <select class="form-select custom-select" 
          id="type_DLV"
          name="type_DLV"
-         #type_DLV="ngModel"
-         ngModel
-         [(ngModel)]="default_Type"
+         
          > 
-     <option [ngValue]="null" style="display: none;">Select DLV Type</option> 
+     <option  style="display: none;">Select DLV Type</option> 
      <option value="income/create">Income</option>
-     <option [ngValue]="null">Expense</option>
-     <option [ngValue]="null">Reimbursement-Income</option>
-     <option [ngValue]="null">Reimbursement-Expense</option>                   
+     <option>Expense</option>
+     <option>Reimbursement-Income</option>
+     <option> Reimbursement-Expense</option>                   
  </select>
  <p  class="text-danger mt-2" *ngIf="error_DLV && !default_Type">Please Select DLV Type</p>
 </div>
