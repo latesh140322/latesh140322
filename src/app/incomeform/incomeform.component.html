@@ -50,7 +50,7 @@
 
    <div class="w-100 m-auto">     
 <div class="accordion" id="accordionExample">    
-    <form  #formValue = "ngForm"  (ngSubmit)="onGenerateDLV(formValue)">
+    <form [formGroup]="myGenerateDLV" (ngSubmit)="onGenerateDLV()">
       
       
       <!-- Header Details input field -->
@@ -105,14 +105,11 @@
                 <select 
                         class="form-select form-select-sm custom-select" 
                         aria-label=".form-select-sm example"
-                        id="type_Receiver"
-                        name="type_Receiver"
-                        #type_Receiver="ngModel"
-                        ngModel
-                        [(ngModel)]="default_Rec"
-                        required
+                        id="serviceReceiver"
+                        formControlName="serviceReceiver"
+                        
                         >
-                  <option [ngValue] = "null" style="display : none;">Select Services</option>
+                  <option value="null">Select Services</option>
                   <option value="SAIPL">SAIPL</option>
                   <option value="SkodaMB">SkodaMB</option>
                   <option value="VWAG">VWAG</option>
@@ -121,7 +118,7 @@
 
                <!-- <small class="text-danger" *ngIf="type_Receiver.touched && !default_Type" >*reuqried field</small> -->
                    <span class="text-danger"
-                       *ngIf=" (type_Receiver.touched ||formValue.submitted) && type_Receiver.errors?.required">
+                       *ngIf=" incomeFormSubMitted && myGenerateDLV.get('serviceReceiver').invalid">
                        *reuqried field
                    </span>
              </div> 
@@ -135,17 +132,15 @@
                   <input 
                         type="text" class="form-control" 
                         placeholder="Deparment e.g. VG22"
-                        id="type_Dept"
-                        name="type_Dept"
-                        #type_Dept="ngModel"
-                        ngModel
-                        required
+                        id="department"
+                        formControlName="department"
                         >
-                       </div>
+                  </div>
 
-                       <span class="text-danger" *ngIf="(type_Dept.touched ||formValue.submitted) && type_Dept.errors?.required">
-                       *reuqried field
-                       </span>
+                  <span class="text-danger"
+                        *ngIf=" incomeFormSubMitted && myGenerateDLV.get('department').invalid">
+                        *reuqried field
+                  </span>
 
              </div>                                                                 
              </div>
@@ -163,18 +158,15 @@
                               type="date" 
                               class="form-control" 
                               placeholder="DD-MMM-YYYY"
-                              id="type_Valid"
-                              name="type_Valid"
-                              #type_Valid="ngModel"
-                              ngModel
-                              required
+                              id="validDate"
+                              formControlName="validDate"
                               />
                         
                       </div>
                       <span class="text-danger"
-                           *ngIf="(type_Valid.touched || formValue.submitted) && type_Valid.errors?.required">
+                           *ngIf="incomeFormSubMitted && myGenerateDLV.get('validDate').invalid">
                            *reuqried field
-                      </span>
+                      </span> 
 
                       
                      </div>
@@ -183,7 +175,12 @@
                      </div>
                 <div class="col-md-4 col-12">                        
                  <div class="input-group date" id="datepicker1">
-                   <input type="date" class="form-control" placeholder="DD-MMM-YYYY" id="validfrom"/>
+                   <input 
+                        type="date" 
+                        class="form-control" 
+                        placeholder="DD-MMM-YYYY" 
+                        id="tillDate"
+                        formControlName="tillDate"/>
                    
                  </div>
                </div>                                                                 
@@ -199,18 +196,14 @@
                        type="text"
                        class="form-control"
                        placeholder="Cost Center e.g. 12131"
-                       id="type_Cost"
-                       name="type_Cost"
-                       #type_Cost="ngModel"
-                       ngModel
-                       required
+                       id="costCenter"
+                       formControlName="costCenter"
                        >
               </div>
-              <span class="text-danger"
-                  *ngIf="(type_Cost.touched || formValue.submitted) && type_Cost.errors?.required"
-              >
-                *required field
-              </span>
+                      <span class="text-danger"
+                           *ngIf="incomeFormSubMitted && myGenerateDLV.get('costCenter').invalid">
+                           *reuqried field
+                      </span> 
             </div> 
                         
              <div class="col-md-2">                  
@@ -225,19 +218,15 @@
                       class="form-control" 
                       placeholder="Name of DLV Creator"
                       aria-label="Text input with radio button"
-                      id="type_Prep"
-                      name="type_Prep"
-                      #type_Prep="ngModel"
-                      ngModel
-                      required
+                      id="preparedBy"
+                      formControlName="preparedBy"
                       >
                 </div>
 
-                <span class="text-danger"
-                      *ngIf="(type_Prep.touched || formValue.submitted) && type_Prep.errors?.required ">
-                
-                  *requried field
-                </span>
+                     <span class="text-danger"
+                           *ngIf="incomeFormSubMitted && myGenerateDLV.get('preparedBy').invalid">
+                           *reuqried field
+                      </span>
           </div> 
         </div>                                                                 
           </div>
@@ -336,7 +325,13 @@
                      </div>
                    <div class="col-md-12 col-12">
                  <div class="form-floating">
-                   <textarea class="form-control" placeholder="Description of Services" id="descriptionofservices"></textarea>
+                   <textarea 
+                          class="form-control" 
+                          placeholder="Description of Services" 
+                          id="descService"
+                          formControlName="descService"
+                          
+                          ></textarea>
                    <label for="descriptionofservices">Description of Services</label>
                  </div>
                  </div>
@@ -366,21 +361,17 @@
                          <textarea 
                                   class="form-control" 
                                   placeholder="Scope of Services" 
-                                  id="type_Scope"
-                                  name="type_Scope"
-                                  #type_Scope ="ngModel"
-                                  ngModel
-                                  required
-                                  >
-                                
+                                  id="scopeService"
+                                   formControlName="scopeService"
+                                  > 
                                 </textarea>
                          <label for="scopeofservices">Scope of Services</label>
                          </div>
-
                          <span class="text-danger"
-                                *ngIf="(type_Scope.touched || formValue.submitted) && type_Scope.errors?.required ">
-                           *requried field
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('scopeService').invalid">
+                                *reuqried field
                          </span>
+                         
                    </div>
                    </div>
                    <div class="row mt-2">                      
@@ -391,17 +382,15 @@
                            <input 
                                   type="file" 
                                   class="form-control" 
-                                  id="type_Upload" 
-                                  name="type_Upload"
-                                  #type_Upload="ngModel"
-                                  ngModel
-                                  required
+                                  id="uploadScope"
+                                  formControlName="uploadScope"
                                   />
-                        </div>           
-                            <span class="text-danger"
-                                  *ngIf="(formValue.submitted) && type_Upload.errors?.required ">
-                                  *requried field
-                            </span>                                                                                 
+                        </div>    
+                        <span class="text-danger"
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('uploadScope').invalid">
+                                *reuqried field
+                         </span>
+                                                                                                           
                  </div>
                <!--End of row9-->
                <!--begning of row10-->
@@ -414,18 +403,15 @@
                        <textarea 
                                 class="form-control" 
                                 placeholder="Consideration Text" 
-                                id="type_Cond"
-                                name="type_Cond"
-                                #type_Cond ="ngModel"
-                                ngModel
-                                required
+                                id="consideration"
+                                formControlName="consideration"
                                 >
                               </textarea>
                        <label for="considerationtext">Scope of Services</label>
                      </div>
-                     <span class="text-danger"
-                                *ngIf="(type_Cond.touched || formValue.submitted) && type_Cond.errors?.required ">
-                           *requried field
+                         <span class="text-danger"
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('consideration').invalid">
+                                *reuqried field
                          </span>
                  </div>                      
                </div>
@@ -437,17 +423,15 @@
                      <input 
                             type="file" 
                             class="form-control" 
-                            id="type_upCond" 
-                            name="type_upCond"
-                            #type_upCond ="ngModel"
-                            ngModel
-                            required
+                            id="uploadCod"
+                            formControlName="uploadCod"
                             />
                      </div>
-                     <span class="text-danger"
-                            *ngIf="formValue.submitted && type_upCond.errors?.required">
-                          *requried field
-                          </span>
+
+                         <span class="text-danger"
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('uploadCod').invalid">
+                                *reuqried field
+                           </span>
                      <div class="col-md-6 col-12">                        
                      </div>                
                </div>
@@ -462,20 +446,16 @@
                        <div class="input-group">
                            <input 
                                   type="number" 
-                                  class="form-control"  
-                                  pattern="[0-9]+(\.[0-9]{1,2})?%?" 
+                                  class="form-control"   
                                   placeholder="0.00%"
-                                  id="type_GST"
-                                  name="type_GST"
-                                  #type_GST="ngModel"
-                                  ngModel
-                                  required
+                                  id="gst"
+                                  formControlName="gst"
                                   >
                          </div> 
-                         <span class="text-danger"
-                                *ngIf="(type_GST.touched || formValue.submitted) && type_GST.errors?.required">
-                                *required field
-                         </span>                           
+                           <span class="text-danger"
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('gst').invalid">
+                                *reuqried field
+                           </span>                           
                        </div>  
                        <div class="col-md-2 col-12">
                            <label class="f-600">GST Amount <span class="astColor">*</span></label>
@@ -484,25 +464,26 @@
                          <input 
                                 type="number" 
                                 class="form-control"  
-                                pattern="[0-9]+(\.[0-9]{1,2})" 
                                 placeholder="GST Amount e.g. 121.12"
-                                id="type_GSTAmt"
-                                name="type_GSTAmt"
-                                #type_GSTAmt="ngModel"
-                                ngModel
-                                required
+                                id="gstAmount"
+                                formControlName="gstAmount"
                                 >       
                                 <span class="text-danger"
-                                      *ngIf="(type_GSTAmt.touched || formValue.submitted) && type_GSTAmt.errors?.required">
-                                      *required field
-                                </span>              
+                                    *ngIf="incomeFormSubMitted && myGenerateDLV.get('gstAmount').invalid">
+                                      *reuqried field
+                                </span>
                       </div>  
                     
 
                      <div class="col-md-2 col-12">
-                       <select class="form-select form-select-sm custom-select" aria-label=".form-select-sm example">
+                       <select 
+                              class="form-select form-select-sm custom-select" 
+                              aria-label=".form-select-sm example"
+                              id="INR"
+                              formControlName="INR"
+                              >
                          <option value="">Select Currency</option>
-                         <option value="Monthly">INR</option>
+                         <option value="INR">INR</option>
                          <option value="Quaterly">EURO</option>
                          <option value="Semiannually">USD</option>                       
                        </select> 
@@ -525,17 +506,14 @@
                                   type="text" 
                                   class="form-control" 
                                   placeholder="Notice SAVWIPL Name" 
-                                  id="type_SAVWIPL"
-                                  name="type_SAVWIPL"
-                                  #type_SAVWIPL="ngModel"
-                                  ngModel
-                                  required
+                                  id="SAVWIPLName"
+                                  formControlName="SAVWIPLName"
                                   >
                          </div>
-                         <span class="text-danger"
-                              *ngIf="(type_SAVWIPL.touched || formValue.submitted) && type_SAVWIPL.errors?.required">
-                              *required field
-                        </span>  
+                                <span class="text-danger"
+                                    *ngIf="incomeFormSubMitted && myGenerateDLV.get('SAVWIPLName').invalid">
+                                      *reuqried field
+                                </span> 
 
                        </div>
                        <div class="col-md-2 col-12">
@@ -548,19 +526,19 @@
                                     class="form-control" 
                                     placeholder="Notice SAVWIPL Email ID"
                                     id="email"
-                                    name="email"
-                                    #email="ngModel"
-                                    ngModel
-                                    required
+                                    formControlName="email"
                                     >
                             </div>
-                            <span class="text-danger"
-                                *ngIf="(email.touched || formValue.submitted) && email.errors?.required">
-                                *required field
-                            </span>
-                            <span class="text-danger" *ngIf=" email.valid && email.errors?.email">
+                            
+                            <div *ngIf="(myGenerateDLV.get('email').invalid && myGenerateDLV.get('email').touched) || incomeFormSubMitted">
+                              <small class="text-danger" *ngIf="myGenerateDLV.get('email').errors?.required">Email address is required</small>
+                              <small class="text-danger" *ngIf="myGenerateDLV.get('email').errors?.pattern">Email address is invalid</small>
+                            </div>
+
+
+                            <!-- <span class="text-danger" *ngIf="incomeFormSubMitted && myGenerateDLV.get('email').invalid && myGenerateDLV.get('email').errors?.pattern">
                                 Enter a valid email address
-                            </span>
+                            </span> -->
 
                           </div>    
                            
@@ -578,18 +556,14 @@
                                 type="text" 
                                 class="form-control" 
                                 placeholder="Notice Receiver Name" 
-                                id="NoticeReceiverName"
-                                id="type_Receiver"
-                                name="type_Receiver"
-                                #type_Receiver="ngModel"
-                                ngModel
-                                required
+                                id="receiverName"
+                                formControlName="receiverName"
                                 >
                        </div>
-                       <span class="text-danger"
-                              *ngIf="(type_Receiver.touched || formValue.submitted) && type_Receiver.errors?.required">
-                              *required field
-                        </span> 
+                        <span class="text-danger"
+                            *ngIf="incomeFormSubMitted && myGenerateDLV.get('receiverName').invalid">
+                              *reuqried field
+                        </span>  
                      </div>
                      <div class="col-md-2 col-12">
                        <label class="form-label f-600" for="Email">Receiver Email <span class="astColor">*</span></label>                               
@@ -597,23 +571,17 @@
                      <div class="col-md-4 col-12">                     
                          <div class="input-group">
                              <input 
-                                    type="email" 
-                                    class="form-control" 
-                                    placeholder="Notice Receiver Email ID"
-                                    id="type_email"
-                                    name="type_email"
-                                    #type_email="ngModel"
-                                    ngModel
-                                    required
+                                  type="email" 
+                                  class="form-control" 
+                                  placeholder="Notice SAVWIPL Email ID"
+                                  id="receiverEmail"
+                                  formControlName="receiverEmail"
                                     >
                            </div>
-                           <span class="text-danger"
-                                *ngIf="(type_email.touched || formValue.submitted) && type_email.errors?.required">
-                                *required field
-                            </span>
-                            <span class="text-danger" *ngIf=" type_email.valid && type_email.errors?.email">
-                              Enter a valid email address
-                            </span>
+                           <div *ngIf="(myGenerateDLV.get('receiverEmail').invalid && myGenerateDLV.get('receiverEmail').touched) || incomeFormSubMitted ">
+                            <small class="text-danger" *ngIf="myGenerateDLV.get('receiverEmail').errors?.required">Email address is required</small>
+                            <small class="text-danger" *ngIf="myGenerateDLV.get('receiverEmail').errors?.pattern">Email address is invalid</small>
+                          </div>
                          </div>                 
                </div>
                <!--End of row13-->
@@ -621,7 +589,14 @@
                       <div class="row mt-2">
                        <div class="col-md-12 col-12">
                            <div class="form-floating">
-                               <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                               <textarea 
+                                      class="form-control" 
+                                      placeholder="Leave a comment here" 
+                                      id="additionalClu"
+                                      formControlName="additionalClu"
+                                      
+                                      >
+                                    </textarea>
                                <label for="floatingTextarea">Additional Miscelleneous Clauses</label>
                              </div>                     
                            </div>                
@@ -653,17 +628,14 @@
               <input 
                     type="text" 
                     class="form-control"
-                    id="type_Trac"
-                    name="type_Trac"
-                    #type_Trac ="ngModel"
-                    ngModel
-                    required
+                    id="natureTran"
+                    formControlName="natureTran"
                     >
             </div>
             <span class="text-danger"
-                  *ngIf="(type_Trac.touched || formValue.submitted) && type_Trac.errors?.required ">
-              *requried field
-            </span>
+                *ngIf="incomeFormSubMitted && myGenerateDLV.get('natureTran').invalid">
+                  *reuqried field
+            </span> 
           </div>
         </div>
         <div class="row mt-2">        
@@ -677,17 +649,14 @@
                <input 
                       type="text" 
                       class="form-control"
-                      id="type_Res"
-                      name="type_Res"
-                      #type_Res="ngModel"
-                      ngModel
-                      required
+                      id="mentionRes"
+                      formControlName="mentionRes"
                       >
              </div>
              <span class="text-danger"
-                  *ngIf="(type_Res.touched || formValue.submitted) && type_Res.errors?.required ">
-              *requried field
-            </span>
+                *ngIf="incomeFormSubMitted && myGenerateDLV.get('mentionRes').invalid">
+                  *reuqried field
+            </span> 
            </div>
          </div>
       
@@ -734,18 +703,16 @@
                       <input 
                             type="text" 
                             class="form-control"
-                             placeholder="ABCDE1234F"
-                             id="type_Pan"
-                             name="type_Pan"
-                             #type_Pan="ngModel"
-                             ngModel
-                             required
+                            placeholder="ABCDE1234F"
+                            id="panCard"
+                            formControlName="panCard"
                              >
                     </div>
-                    <span class="text-danger"
-                          *ngIf="(type_Pan.touched || formValue.submitted) && type_Pan.errors?.required ">
-                        *requried field
-                    </span>
+                   
+                    <div *ngIf="(myGenerateDLV.get('panCard').invalid && myGenerateDLV.get('panCard').touched) || incomeFormSubMitted ">
+                      <small class="text-danger" *ngIf="myGenerateDLV.get('panCard').errors?.required">Pancard number address is required</small>
+                      <small class="text-danger" *ngIf="myGenerateDLV.get('panCard').errors?.pattern">Pancard number address is invalid</small>
+                    </div>
                     </div>                  
                           <div class="col-md-2 col-12">
                             <label class="f-600">Currency </label>
@@ -772,22 +739,18 @@
                     <select 
                           class="form-select form-select-sm custom-select" 
                           aria-label=".form-select-sm example"
-                          id="type_Service"
-                          name="type_Service"
-                          #type_Service="ngModel"
-                          ngModel
-                          [(ngModel)]="default_Serv"
-                          required
+                          id="funService"
+                          formControlName="funService"
                           >
-                      <option [ngValue]="null" style="display: none;">Select Services</option>
+                      <option value="null">Select Services</option>
                       <option value="Reimbursement">Reimbursement</option>
                       <option value="others">others</option>
                       <option value="Notapplicable">Not applicable</option>                                                                     
                     </select>
                     <span class="text-danger"
-                          *ngIf="(type_Service.touched || formValue.submitted) && type_Service.errors?.required ">
-                      *requried field
-                   </span>
+                        *ngIf="incomeFormSubMitted && myGenerateDLV.get('funService').invalid">
+                          *reuqried field
+                    </span> 
 
                      </div>                                
                   </div><!--end of row-->
@@ -806,20 +769,16 @@
                       <select 
                               class="form-select form-select-sm custom-select" 
                               aria-label=".form-select-sm example"
-                              id="type_Location"
-                              name="type_Location"
-                              #type_Location="ngModel"
-                              ngModel
-                              [(ngModel)]="default_loc"
-                              required
+                              id="locationGod"
+                              formControlName="locationGod"
                               >
-                        <option [ngValue]="null" style="display: none;">Select Country</option>
+                        <option value="null">Select Country</option>
                         <option value="Reimbursement">India</option>
                         <option value="others">Outside India</option>                                                                                             
                       </select>
                       <span class="text-danger"
-                            *ngIf="(type_Location.touched || formValue.submitted) && type_Location.errors?.required ">
-                      *requried field
+                        *ngIf="incomeFormSubMitted && myGenerateDLV.get('locationGod').invalid">
+                          *reuqried field
                       </span>
                        </div> 
                        <div class="col-md-2 col-12">
@@ -856,22 +815,18 @@
                         <select 
                               class="form-select form-select-sm custom-select" 
                               aria-label=".form-select-sm example"
-                              id="type_Event"
-                              name="type_Event"
-                              #type_Event="ngModel"
-                              ngModel
-                              [(ngModel)]="default_evn"
-                              required
+                              id="placeEvent"
+                              formControlName="placeEvent"
                               >
-                          <option [ngValue]="null" style="display: none;">Select Country</option>
+                          <option value="null">Select Country</option>
                           <option value="India">India</option>
                           <option value="Outside">Outside</option>                                                                                                 
                           <option value="NA">Not Applicable</option>
                         </select>
                         <span class="text-danger"
-                              *ngIf="(type_Event.touched || formValue.submitted) && type_Event.errors?.required ">
-                            *requried field
-                         </span>
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('placeEvent').invalid">
+                                *reuqried field
+                        </span>
                          </div>                                
                       </div><!--end of row-->
                       <div class="row mt-2">        
@@ -884,17 +839,14 @@
                                 type="text" 
                                 class="form-control" 
                                 placeholder="Event Organiser"
-                                id="type_event"
-                                name="type_event"
-                                #type_event="ngModel"
-                                ngModel
-                                required
+                                id="eventOrg"
+                                formControlName="eventOrg"
                                 >
                         </div>
                         <span class="text-danger"
-                              *ngIf="(type_Event.touched || formValue.submitted) && type_Event.errors?.required ">
-                           *requried field
-                       </span>
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('eventOrg').invalid">
+                                *reuqried field
+                        </span>
 
                          </div>                                
                       </div><!--end of row-->
@@ -913,21 +865,17 @@
                           <select 
                                 class="form-select form-select-sm custom-select" 
                                 aria-label=".form-select-sm example"
-                                id="type_Party"
-                                name="type_Party"
-                                #type_Party="ngModel"
-                                ngModel
-                                [(ngModel)]="default_pyt"
-                                required
+                                id="thirdParty"
+                                formControlName="thirdParty"
                                 >
-                            <option [ngValue]="null" style="display: none;">Type of Company</option>
+                            <option value="null">Type of Company</option>
                             <option value="Group Company">Group Company</option>
                             <option value="Non Group Company">Non Group Company</option>                                                                                                 
                           </select>
                           <span class="text-danger"
-                              *ngIf="(type_Party.touched || formValue.submitted) && type_Party.errors?.required ">
-                            *requried field
-                         </span>
+                              *ngIf="incomeFormSubMitted && myGenerateDLV.get('thirdParty').invalid">
+                                *reuqried field
+                          </span>
                            </div>                                
                         </div><!--end of row-->
             </div>

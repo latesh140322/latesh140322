@@ -14,11 +14,16 @@ export class DashboardComponent implements OnInit {
   error_DLV : Boolean = false
 
  
-  constructor(private route: Router) { }
+  constructor(private route: Router,
+              private _dlvData : DLVDataService
+              ) { }
 
 
   ngOnInit(): void {
-
+      // this._dlvData.getDLV().then((res)=>{
+      //   console.log(res);
+        
+      // })
    }
     
   onRoute(formValues : NgForm){
